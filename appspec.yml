@@ -2,12 +2,9 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/tarafirst_payroll
+    destination: /home/ubuntu/payroll
 hooks:
-  BeforeInstall:
-    - location: scripts/install_dep.sh
-      runas: root
-  AfterInstall:
+  ApplicationStop:
     - location: scripts/stop_containers.sh
       runas: root
   ApplicationStart:
