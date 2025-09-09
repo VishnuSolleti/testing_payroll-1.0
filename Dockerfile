@@ -27,4 +27,4 @@ COPY . .
 EXPOSE 8000
 
 # Run gunicorn
-CMD ["gunicorn", "tara_user_management.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "Tara.wsgi:application", "--bind", "0.0.0.0:8000"]
