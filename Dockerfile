@@ -6,6 +6,7 @@ FROM python:3.11-slim AS builder
 WORKDIR /app
 
 # Prevent Python from writing pyc files / forcing stdout flush
+#Prevent Python from writing pyc files / forcing stdout flush
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
