@@ -12,7 +12,7 @@ services:
     networks:
       - micro_net
     healthcheck:
-      test: [ "CMD-SHELL", "curl -f http://localhost:8000/payroll/ || exit 1" ]
+      test: [ "CMD-SHELL", "python -c 'import urllib.request; exit(0) if urllib.request.urlopen(\"http://localhost:8000/payroll/\").status == 200 else exit(1)'" ]
       interval: 30s
       timeout: 5s
       retries: 5
