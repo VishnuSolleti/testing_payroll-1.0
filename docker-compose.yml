@@ -12,10 +12,11 @@ services:
     networks:
       - micro_net
     healthcheck:
-      test: [ "CMD-SHELL", "python -c 'import requests; print(requests.get(\"http://localhost:8000/user_management/\").status_code)' || exit 1" ]
+      test: [ "CMD-SHELL", "curl -f http://localhost:8000/payroll/ || exit 1" ]
       interval: 30s
       timeout: 5s
       retries: 5
+
 
 networks:
   micro_net:

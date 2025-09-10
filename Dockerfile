@@ -43,8 +43,8 @@ COPY . .
 EXPOSE 8000
 
 # Healthcheck endpoint (Django’s default or custom /healthz)
-HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
-    CMD curl -f http://localhost:8000/user_management/ || exit 1
+#HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+#    CMD curl -f http://localhost:8000/payroll/ || exit 1
 
 # Run Gunicorn
 CMD ["gunicorn", "Tara.wsgi:application", "--bind", "0.0.0.0:8000"]
