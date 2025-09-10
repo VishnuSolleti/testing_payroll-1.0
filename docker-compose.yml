@@ -4,6 +4,7 @@ services:
     container_name: payroll_service
     ports:
       - "8001:8000"
+    restart: always
     command: >
       gunicorn Tara.wsgi:application --bind 0.0.0.0:8000
 #    env_file:
@@ -11,11 +12,10 @@ services:
     networks:
       - micro_net
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/user_management/"]
+      test: [ "CMD-SHELL", "python -c 'import requests; print(requests.get(\"http://localhost:8000/user_management/\").status_code)' || exit 1" ]
       interval: 30s
       timeout: 5s
-      retries: 3
-      start_period: 30s
+      retries: 5
 
 networks:
   micro_net:
