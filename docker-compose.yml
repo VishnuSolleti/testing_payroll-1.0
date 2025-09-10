@@ -1,5 +1,5 @@
 services:
-  user_management:
+  payroll:
     image: ${DOCKER_IMAGE}:${IMAGE_TAG}
     container_name: payroll_service
     ports:
@@ -7,5 +7,16 @@ services:
     command: >
       gunicorn Tara.wsgi:application --bind 0.0.0.0:8000
 #    env_file:
-#      - .env
+#      - ../env/global.env
+    networks:
+      - micro_net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/user_management/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
 
+networks:
+  micro_net:
+    external: true
